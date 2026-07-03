@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 33% 98%;
+    --foreground: 211 64% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 211 64% 12%;
+    --muted: 210 29% 94%;
+    --muted-foreground: 218 10% 41%;
+    --primary: 210 64% 12%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 32 93% 54%;
+    --accent-foreground: 211 64% 12%;
+    --border: 214 26% 88%;
+    --input: 214 26% 88%;
+    --ring: 32 93% 54%;
+    --success: 157 62% 37%;
+    --info: 199 89% 42%;
+    --warning: 41 96% 52%;
+    --font-heading: "Poppins";
+    --font-body: "Inter";
+    --font-arabic: "Cairo";
+  }
+
+  .dark {
+    --background: 216 38% 7%;
+    --foreground: 210 31% 96%;
+    --card: 216 32% 10%;
+    --card-foreground: 210 31% 96%;
+    --muted: 216 23% 15%;
+    --muted-foreground: 215 15% 72%;
+    --primary: 210 31% 96%;
+    --primary-foreground: 211 64% 12%;
+    --accent: 32 93% 54%;
+    --accent-foreground: 211 64% 12%;
+    --border: 216 20% 20%;
+    --input: 216 20% 20%;
+    --ring: 32 93% 54%;
+    --success: 151 62% 48%;
+    --info: 196 84% 62%;
+    --warning: 41 96% 58%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body), Inter, system-ui, sans-serif;
+  }
+
+  html[dir="rtl"] body {
+    font-family: var(--font-arabic), Cairo, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading tracking-normal;
+  }
+
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4,
+  html[dir="rtl"] h5,
+  html[dir="rtl"] h6 {
+    font-family: var(--font-arabic), Cairo, sans-serif;
+  }
+
+  ::selection {
+    background: rgba(247, 147, 30, 0.28);
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-20 sm:py-24;
+  }
+
+  .section-tight {
+    @apply py-14 sm:py-16;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.18em] text-orange;
+  }
+
+  html[dir="rtl"] .eyebrow {
+    letter-spacing: 0;
+  }
+
+  .surface {
+    @apply border border-border/70 bg-card/90 shadow-premium backdrop-blur-xl;
+  }
+
+  .premium-panel {
+    @apply relative overflow-hidden rounded-lg border border-border bg-card shadow-premium;
+  }
+
+  .premium-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(135deg, rgba(247, 147, 30, 0.13), transparent 34%),
+      linear-gradient(315deg, rgba(14, 116, 144, 0.1), transparent 32%);
+  }
+
+  .premium-panel > * {
+    position: relative;
+  }
+
+  .metric-card {
+    @apply rounded-lg border border-border bg-card p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-accent/55 hover:shadow-lift;
+  }
+
+  .status-chip {
+    @apply inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 text-xs font-bold text-muted-foreground;
+  }
+
+  .dashboard-table {
+    @apply w-full border-separate border-spacing-0 text-sm;
+  }
+
+  .dashboard-table th {
+    @apply border-b border-border px-4 py-3 text-start text-xs font-bold uppercase text-muted-foreground;
+  }
+
+  html[dir="rtl"] .dashboard-table th {
+    letter-spacing: 0;
+  }
+
+  .dashboard-table td {
+    @apply border-b border-border/70 px-4 py-4 align-middle;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .bg-grid-soft {
+    background-image: linear-gradient(rgba(107, 114, 128, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(107, 114, 128, 0.12) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  .bg-precision-mesh {
+    background-image:
+      linear-gradient(rgba(247, 147, 30, 0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11, 31, 51, 0.13) 1px, transparent 1px),
+      radial-gradient(circle at 18% 18%, rgba(247, 147, 30, 0.14), transparent 28%),
+      radial-gradient(circle at 82% 12%, rgba(14, 116, 144, 0.15), transparent 26%);
+    background-size: 42px 42px, 42px 42px, auto, auto;
+  }
+
+  .text-gradient-premium {
+    background: linear-gradient(90deg, #f7931e, #0e7490, #6b7280);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .mask-fade {
+    mask-image: linear-gradient(to bottom, black 72%, transparent);
+  }
+}

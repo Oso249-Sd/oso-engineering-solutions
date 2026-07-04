@@ -700,8 +700,8 @@ const content = {
       title: "Talk to an engineering consultant",
       text:
         "Send your scope, drawings, or question. We will respond with a clear next step.",
-      phone: "+1 555 012 4080",
-      email: "hello@osoengineering.com",
+      phone: "+91 87907 53708",
+      email: "eng.osman249@gmail.com",
       address: "International remote consultancy serving clients worldwide",
       hours: "Monday to Friday, 9:00 AM - 6:00 PM",
       whatsapp: "WhatsApp"
@@ -1328,8 +1328,8 @@ const content = {
       title: "تحدث إلى مستشار هندسي",
       text:
         "أرسل النطاق أو الرسومات أو السؤال، وسنرد عليك بخطوة تالية واضحة.",
-      phone: "+1 555 012 4080",
-      email: "hello@osoengineering.com",
+      phone: "+91 87907 53708",
+      email: "eng.osman249@gmail.com",
       address: "استشارات دولية عن بعد تخدم العملاء حول العالم",
       hours: "من الاثنين إلى الجمعة، 9:00 صباحا - 6:00 مساء",
       whatsapp: "واتساب"

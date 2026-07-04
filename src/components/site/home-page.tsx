@@ -45,11 +45,13 @@ export function HomePage({
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild variant="accent" size="lg">
-                <Link href="/quote" locale={locale}>
-                  {content.actions.quote}
-                  <ArrowUpRight />
-                </Link>
-              </Button>
+  <a
+    href="mailto:eng.osman249@gmail.com?subject=Request%20a%20Quote"
+  >
+    {content.actions.quote}
+    <ArrowUpRight />
+  </a>
+</Button>
               <Button asChild variant="outline" size="lg" className="border-white/25 bg-white/10 text-white hover:bg-white/16">
                 <Link href="/services" locale={locale}>
                   {content.actions.exploreServices}

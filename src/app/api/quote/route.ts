@@ -1,9 +1,9 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   try {
     const data = await request.json();
 
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
 
     const result = await resend.emails.send({
       from: "OSO Engineering <onboarding@resend.dev>",
-      to: "eng.osman249@gmail.com",
+      to: ["eng.osman249@gmail.com"],
       subject: `New Quote Request from ${name}`,
       html: `
         <h2>New Quote Request</h2>

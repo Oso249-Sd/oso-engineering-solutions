@@ -14,6 +14,7 @@ import type {SiteContent} from "@/lib/content";
 export function QuoteForm({content}: {content: SiteContent}) {
   const [step, setStep] = useState(0);
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const labels = {...content.forms, ...content.actions};
   const schema = z.object({
     service: z.string().min(1, labels.required),
@@ -41,12 +42,47 @@ export function QuoteForm({content}: {content: SiteContent}) {
         : (["name", "email"] as const);
     const valid = await form.trigger(fields);
     if (valid) setStep((value) => Math.min(value + 1, steps.length - 1));
-  };
+  };const onSubmit = async (values: Values) => {
+  try {
+    setLoading(true);
+
+    const response = await fetch("/api/quote", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        service: values.service,
+        budget: values.budget,
+        timeline: values.timeline,
+        country: values.country,
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        company: "",
+        message: values.description,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send quote.");
+    }
+
+    form.reset();
+    setStep(0);
+    setSent(true);
+  } catch (error) {
+    alert("Unable to send your request. Please try again.");
+    console.error(error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <form
       className="surface space-y-7 rounded-lg p-6 md:p-8"
-      onSubmit={form.handleSubmit(() => setSent(true))}
+      onSubmit={form.handleSubmit(onSubmit)}
     >
       <div className="flex gap-2">
         {steps.map((_, index) => (
@@ -150,9 +186,13 @@ export function QuoteForm({content}: {content: SiteContent}) {
             {labels.next}
           </Button>
         ) : (
-          <Button type="submit" variant="accent">
-            {labels.quote}
-          </Button>
+          <Button
+  type="submit"
+  variant="accent"
+  disabled={loading}
+>
+  {loading ? "Sending..." : labels.quote}
+</Button>
         )}
       </div>
     </form>

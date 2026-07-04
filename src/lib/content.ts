@@ -712,7 +712,20 @@ const content = {
       company: "Company",
       resources: "Resources",
       legal: "Legal",
-      socials: ["LinkedIn", "X", "Instagram"],
+      socials: [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/osman-ahmed-001340310/"
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/YOURUSERNAME"
+  },
+  {
+    name: "X",
+    href: "https://x.com/YOURUSERNAME"
+  }
+],
       newsletterText:
         "Monthly insights on engineering documentation, quantities, planning, and delivery."
     },
@@ -1340,7 +1353,20 @@ const content = {
       company: "الشركة",
       resources: "الموارد",
       legal: "القانوني",
-      socials: ["لينكدإن", "إكس", "إنستغرام"],
+      socials: [
+  {
+    name: "لينكدإن",
+    href: "https://www.linkedin.com/in/osman-ahmed-001340310/"
+  },
+  {
+    name: "إنستغرام",
+    href: "https://instagram.com/YOURUSERNAME"
+  },
+  {
+    name: "إكس",
+    href: "https://x.com/YOURUSERNAME"
+  }
+],
       newsletterText:
         "رؤى شهرية حول الوثائق الهندسية والكميات والتخطيط والتسليم."
     },

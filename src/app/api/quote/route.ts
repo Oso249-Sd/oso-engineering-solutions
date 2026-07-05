@@ -21,7 +21,7 @@ export async function POST(request: Request) {
 
     const result = await resend.emails.send({
       from: "OSO Engineering <onboarding@resend.dev>",
-      to: ["eng.osman249@gmail.com"],
+      to: "osman784443414@gmail.com",
       subject: `New Quote Request from ${name}`,
       html: `
         <h2>New Quote Request</h2>
